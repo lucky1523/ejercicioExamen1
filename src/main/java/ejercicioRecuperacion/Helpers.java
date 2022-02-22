@@ -1,7 +1,11 @@
 package ejercicioRecuperacion;
 
-public class Util1Static {
+public class Helpers {
     public static boolean applicaBeca(int carnet){
         return false;
+    }
+
+    public int getNota(int ci){
+        return 0;
     }
 }

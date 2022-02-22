@@ -2,13 +2,21 @@ package ejercicioRecuperacion;
 
 public class BecaEstudio {
 
-    Util1Static util1Static = new Util1Static();
-    Util2 util2 = new Util2();
-    public BecaEstudio (Util2 objetoMock) { util2 = objetoMock;}
+    Helpers helpers =  new Helpers();
+    public BecaEstudio (Helpers objetoMock) { helpers = objetoMock;}
 
 public String recomendacionBeca(int carnet){
-        if (Util1Static.applicaBeca())
-
+        String message ="";
+        if (Helpers.applicaBeca(carnet)){
+            if(helpers.getNota(carnet)>=90){
+                message = "SI APLICA A BECA";
+            } else if (helpers.getNota(carnet)<90){
+                message = "NO APLICA A BECA POR PROMEDIO ACADEMICO";
+            }
+        } else {
+            message = "EL ESTUDIANTE NO CURSO AUN EL 60% DE LAS MATERIAS";
+        }
+    return message;
 
 }
 
