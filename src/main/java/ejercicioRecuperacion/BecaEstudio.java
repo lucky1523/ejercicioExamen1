@@ -10,7 +10,7 @@ public String recomendacionBeca(int carnet){
         if (Helpers.applicaBeca(carnet)){
             if(helpers.getNota(carnet)>=90){
                 message = "SI APLICA A BECA";
-            } else if (helpers.getNota(carnet)<90){
+            } else if (helpers.getNota(carnet)<90) {
                 message = "NO APLICA A BECA POR PROMEDIO ACADEMICO";
             }
         } else {

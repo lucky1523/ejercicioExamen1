@@ -15,6 +15,7 @@ public static void before(){
     MockedStatic<Helpers> mockedStatic =Mockito.mockStatic(Helpers.class);
     mockedStatic.when(()->Helpers.applicaBeca(12345)).thenReturn(true);
     mockedStatic.when(()->Helpers.applicaBeca(54321)).thenReturn(true);
+    mockedStatic.when(()->Helpers.applicaBeca(55555)).thenReturn(false);
     mockedStatic.when(()->Helpers.applicaBeca(11111)).thenReturn(false);
 }
 
@@ -25,6 +26,7 @@ public static void before(){
     String actual =becaEstudio.recomendacionBeca(12345);
     String expected ="SI APLICA A BECA";
     Assertions.assertEquals(actual,expected,"EROOR");
+
     }
 
     @Test
@@ -34,16 +36,20 @@ public static void before(){
         String actual =becaEstudio.recomendacionBeca(54321);
         String expected ="NO APLICA A BECA POR PROMEDIO ACADEMICO";
         Assertions.assertEquals(actual,expected,"EROOR");
+
     }
+
 
     @Test
     public void verifyAplicaBecaFalse(){
-        Mockito.when(servicioMock.getNota(11111)).thenReturn(100);
         BecaEstudio becaEstudio = new BecaEstudio(servicioMock);
-        String actual =becaEstudio.recomendacionBeca(12345);
-        String expected ="SI APLICA A BECA";
+        String actual =becaEstudio.recomendacionBeca(11111);
+        System.out.println(actual);
+        String expected ="EL ESTUDIANTE NO CURSO AUN EL 60% DE LAS MATERIAS";
         Assertions.assertEquals(actual,expected,"EROOR");
+
     }
+
 
 
 }
